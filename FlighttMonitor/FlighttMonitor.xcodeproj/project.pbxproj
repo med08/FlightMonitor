@@ -14,6 +14,7 @@
 		C271FE901E9003D400D38A6F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C271FE8F1E9003D400D38A6F /* Assets.xcassets */; };
 		C271FE931E9003D400D38A6F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C271FE911E9003D400D38A6F /* LaunchScreen.storyboard */; };
 		C271FE9B1E900F6700D38A6F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C271FE9A1E900F6700D38A6F /* GoogleService-Info.plist */; };
+		C271FEA51E9054FB00D38A6F /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C271FEA41E9054FB00D38A6F /* CreateAccountViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		C271FE921E9003D400D38A6F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C271FE941E9003D400D38A6F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C271FE9A1E900F6700D38A6F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		C271FEA41E9054FB00D38A6F /* CreateAccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +72,7 @@
 				C271FE911E9003D400D38A6F /* LaunchScreen.storyboard */,
 				C271FE941E9003D400D38A6F /* Info.plist */,
 				C271FE9A1E900F6700D38A6F /* GoogleService-Info.plist */,
+				C271FEA41E9054FB00D38A6F /* CreateAccountViewController.swift */,
 			);
 			path = FlighttMonitor;
 			sourceTree = "<group>";
@@ -215,6 +218,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C271FEA51E9054FB00D38A6F /* CreateAccountViewController.swift in Sources */,
 				C271FE8B1E9003D400D38A6F /* ViewController.swift in Sources */,
 				C271FE891E9003D400D38A6F /* AppDelegate.swift in Sources */,
 			);
@@ -378,6 +382,7 @@
 				C271FE991E9003D400D38A6F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
