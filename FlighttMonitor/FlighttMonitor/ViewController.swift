@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import FirebaseAuth
+import FirebaseDatabase
 
 class ViewController: UIViewController {
 
@@ -16,12 +17,20 @@ class ViewController: UIViewController {
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var logoutButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        self.clearFields()
+        
         if let user = FIRAuth.auth()?.currentUser {
             self.logoutButton.alpha = 1.0
-            self.usernameLabel.text = user.email
+            FIRDatabase.database().reference().child("Users").child(user.uid).observe(.value, with: { (snapshot) in
+                if snapshot.exists(){
+                    let userSnap = snapshot.children.nextObject() as! FIRDataSnapshot
+                    self.usernameLabel.text = userSnap.value! as? String
+                }
+            })
         }
         else {
             self.logoutButton.alpha = 0.0
@@ -36,25 +45,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func createAccount(_ sender: UIButton) {
-        
         performSegue(withIdentifier: "loginToCreateAccount", sender: self)
-        
-        /*if self.emailField.text == "" || self.passwordField.text == "" {
-            self.showAlert(title: "Error", message: "Alege user si parola")
-        }
-        else {
-            FIRAuth.auth()?.createUser(withEmail: self.emailField.text!, password: self.passwordField.text!, completion: { (user, error) in
-                if error == nil {
-                    self.logoutButton.alpha = 1.0
-                    self.usernameLabel.text = user!.email
-                    self.clearFields()
-                }
-                else{
-                    self.showAlert(title: "Error", message: (error?.localizedDescription)!)
-                }
-            })
-        }
-*/
     }
     
     @IBAction func loginAction(_ sender: UIButton) {
@@ -65,7 +56,15 @@ class ViewController: UIViewController {
             FIRAuth.auth()?.signIn(withEmail: self.emailField.text!, password: self.passwordField.text!, completion: { (user, error) in
                 if error == nil {
                     self.logoutButton.alpha = 1.0
-                    self.usernameLabel.text = user!.email
+                    
+                    FIRDatabase.database().reference().child("Users").child((user?.uid)!).observe(.value, with: { (snapshot) in
+                        if snapshot.exists(){
+                            let userSnap = snapshot.children.nextObject() as! FIRDataSnapshot
+                            self.usernameLabel.text = userSnap.value! as? String
+                        }
+                    })
+                    
+                    
                     self.clearFields()
                 }
                 else{
