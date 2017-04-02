@@ -66,6 +66,8 @@ class ViewController: UIViewController {
                     
                     
                     self.clearFields()
+                    
+                    self.performSegue(withIdentifier: "loginToFirstView", sender: self)
                 }
                 else{
                     self.showAlert(title: "Error", message: (error?.localizedDescription)!)

@@ -75,6 +75,7 @@
                         <outlet property="passwordField" destination="iOw-43-a6r" id="YKg-fL-4o6"/>
                         <outlet property="usernameLabel" destination="S26-nt-P2w" id="xmV-CM-4Ss"/>
                         <segue destination="tMO-H8-CGe" kind="show" identifier="loginToCreateAccount" id="vZP-GS-dzv"/>
+                        <segue destination="pNe-n1-xo2" kind="show" identifier="loginToFirstView" id="7nA-uQ-Ozf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -137,11 +138,30 @@
                         <outlet property="emailField" destination="xDs-qp-bJi" id="ZjY-S6-mPj"/>
                         <outlet property="passwordField" destination="mR0-AR-Mmc" id="gSe-M5-qzd"/>
                         <outlet property="usernameField" destination="1qt-im-FTG" id="gdf-ic-OMP"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="createAccountToLogin" id="7cf-V3-GSf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EgI-8M-CXt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1591.2" y="-305.39730134932535"/>
+            <point key="canvasLocation" x="1500" y="-627"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="5DF-iJ-ICi">
+            <objects>
+                <viewController id="pNe-n1-xo2" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="0MZ-d8-hXI"/>
+                        <viewControllerLayoutGuide type="bottom" id="8Vr-H9-f5E"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="OxQ-eq-F2D">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DIp-4G-rR9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2293" y="-299"/>
         </scene>
     </scenes>
 </document>

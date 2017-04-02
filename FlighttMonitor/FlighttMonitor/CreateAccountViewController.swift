@@ -31,29 +31,40 @@ class CreateAccountViewController: UIViewController {
     
     @IBAction func createAccount(_ sender: UIButton) {
         if self.emailField.text == "" || self.passwordField.text == "" || self.usernameField.text == "" || self.checkPasswordField.text == "" {
-            self.showAlert(title: "Error", message: "All fields must be completed!")
+            //self.showAlert(title: "Error", message: "All fields must be completed!")
         }
         else {
             if self.passwordField.text != self.checkPasswordField.text{
-                self.showAlert(title: "Error", message: "Passwords don't match.")
+                //self.showAlert(title: "Error", message: "Passwords don't match.")
             }
             else {
                 FIRAuth.auth()?.createUser(withEmail: self.emailField.text!, password: self.passwordField.text!, completion: { (user, error) in
                     if error == nil {
+                        //self.performSegue(withIdentifier: "createAccountToLogin", sender: self)
+                        
+                        self.showAlert(title: "Success", message: "The account was successfully created!", segueName: "createAccountToLogin")
+                        
                         FIRDatabase.database().reference().child("Users").child(FIRAuth.auth()!.currentUser!.uid).setValue(["username": self.usernameField.text])
+                        
                     }
                     else{
-                        self.showAlert(title: "Error", message: (error?.localizedDescription)!)
+                       // self.showAlert(title: "Error", message: (error?.localizedDescription)!)
                     }
                 })
             }
         }
     }
     
-    func showAlert(title: String, message: String){
+    func showAlert(title: String, message: String, segueName: String){
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: { (action) in
-            alert.dismiss(animated: true, completion: nil)
+            if (segueName == "") {
+                alert.dismiss(animated: true, completion: nil)
+            }
+            else{
+                  self.performSegue(withIdentifier: segueName, sender: true)
+            }
+            
         }))
         self.present(alert, animated: true, completion: nil)
     }
